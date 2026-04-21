@@ -1,0 +1,29 @@
+2026-04-21 14:00:31 | INFO     | __main__ | Bot started | symbol=BTCUSDT | side=BUY | type=MARKET | qty=0.01
+2026-04-21 14:00:31 | INFO     | bot.client | [ORDER REQUEST] symbol=BTCUSDT | side=BUY | type=MARKET | qty=0.01 | price=None | stopPrice=None
+2026-04-21 14:00:31 | DEBUG    | bot.client | POST https://testnet.binancefuture.com/fapi/v1/order | params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': 0.01, 'timestamp': 1776760231535}
+2026-04-21 14:00:31 | DEBUG    | urllib3.connectionpool | Starting new HTTPS connection (1): testnet.binancefuture.com:443
+2026-04-21 14:00:33 | DEBUG    | urllib3.connectionpool | https://testnet.binancefuture.com:443 "POST /fapi/v1/order HTTP/1.1" 400 79
+2026-04-21 14:00:33 | ERROR    | bot.client | HTTP 400 | endpoint=/fapi/v1/order | body={"code":-1021,"msg":"Timestamp for this request is outside of the recvWindow."}
+2026-04-21 14:00:33 | ERROR    | bot.orders | Order placement failed: 400 Client Error: Bad Request for url: https://testnet.binancefuture.com/fapi/v1/order
+2026-04-21 14:00:33 | ERROR    | __main__ | Unexpected error.
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\TradeFlow\trading_bot\cli.py", line 69, in main
+    place_order(
+  File "C:\Users\User\Desktop\TradeFlow\trading_bot\bot\orders.py", line 78, in place_order
+    response = client.place_order(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\TradeFlow\trading_bot\bot\client.py", line 94, in place_order
+    result = self._post("/fapi/v1/order", params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\TradeFlow\trading_bot\bot\client.py", line 50, in _post
+    resp.raise_for_status()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\site-packages\requests\models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://testnet.binancefuture.com/fapi/v1/order
+2026-04-21 14:02:38 | INFO     | __main__ | Bot started | symbol=BTCUSDT | side=BUY | type=MARKET | qty=0.01
+2026-04-21 14:02:38 | INFO     | bot.client | [ORDER REQUEST] symbol=BTCUSDT | side=BUY | type=MARKET | qty=0.01 | price=None | stopPrice=None
+2026-04-21 14:02:38 | DEBUG    | bot.client | POST https://demo-fapi.binance.com/fapi/v1/order | params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': 0.01, 'timestamp': 1776760358092}
+2026-04-21 14:02:38 | DEBUG    | urllib3.connectionpool | Starting new HTTPS connection (1): demo-fapi.binance.com:443
+2026-04-21 14:02:39 | DEBUG    | urllib3.connectionpool | https://demo-fapi.binance.com:443 "POST /fapi/v1/order HTTP/1.1" 200 None
+2026-04-21 14:02:39 | DEBUG    | bot.client | Response [200]: {'orderId': 13056999039, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'ScLlAupWbejaiEaWapfbel', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.0100', 'executedQty': '0.0000', 'cumQty': '0.0000', 'cumQuote': '0.000000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1776760362603}
+2026-04-21 14:02:39 | INFO     | bot.client | [ORDER SUCCESS] orderId=13056999039 | status=NEW | executedQty=0.0000 | avgPrice=0.00
